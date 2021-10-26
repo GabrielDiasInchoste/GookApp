@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "32370887745",
+    "project_id": "gookapp-9fe39",
+    "storage_bucket": "gookapp-9fe39.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:32370887745:android:35a5b6166d720e3fc88ac0",
+        "android_client_info": {
+          "package_name": "com.br.gookapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "32370887745-17qaio66qpmuu3nsrgadujroc2djvect.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAWlgbng9xgQ0RzgXuVhcPIkirFqjNK3Jo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "32370887745-17qaio66qpmuu3nsrgadujroc2djvect.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
