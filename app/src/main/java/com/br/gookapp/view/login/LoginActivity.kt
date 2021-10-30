@@ -1,11 +1,9 @@
-package com.br.gookapp.login
+package com.br.gookapp.view.login
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Button
-import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -17,15 +15,10 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.SignInButton
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.tasks.Task
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.auth.GoogleAuthProvider
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.ktx.Firebase
 
 class LoginActivity : AppCompatActivity() {
     lateinit var gso: GoogleSignInOptions
-    lateinit var mGoogleSignInClient: GoogleSignInClient
+    lateinit var googleSignInClient: GoogleSignInClient
     val RC_SIGN_IN: Int = 1
     lateinit var signOut: Button
 
@@ -38,15 +31,19 @@ class LoginActivity : AppCompatActivity() {
             .requestEmail()
             .build()
         signOut = findViewById<View>(R.id.logout_button) as Button
-        mGoogleSignInClient = GoogleSignIn.getClient(this, gso)
+        googleSignInClient = GoogleSignIn.getClient(this, gso)
         signIn.setOnClickListener { view: View? ->
             signIn()
         }
     }
 
     private fun signIn() {
-        val signInIntent: Intent = mGoogleSignInClient.signInIntent
+        val signInIntent: Intent = googleSignInClient.signInIntent
         startActivityForResult(signInIntent, RC_SIGN_IN)
+    }
+
+    private fun logout() {
+        googleSignInClient.signOut()
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -73,7 +70,7 @@ class LoginActivity : AppCompatActivity() {
         dispTxt.text = account.displayName
         signOut.visibility = View.VISIBLE
         signOut.setOnClickListener { view: View? ->
-            mGoogleSignInClient.signOut().addOnCompleteListener { task: Task<Void> ->
+            googleSignInClient.signOut().addOnCompleteListener { task: Task<Void> ->
                 if (task.isSuccessful) {
                     dispTxt.text = " "
                     signOut.visibility = View.INVISIBLE

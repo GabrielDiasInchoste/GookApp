@@ -9,12 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.GookApp">
-        <activity
-            android:name=".login.LoginActivityOld"
-            android:exported="true" />
-        <activity
-            android:name=".login.LoginActivity"
-            android:exported="true" />
+        <!--        <activity-->
+        <!--            android:name="com.br.gookapp.view.login.LoginActivity"-->
+        <!--            android:exported="true" />-->
         <activity
             android:name=".MainActivity"
             android:exported="true">

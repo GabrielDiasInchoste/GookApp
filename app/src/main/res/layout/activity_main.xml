@@ -1,26 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/loginButton"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:onClick="loginClick"
+    android:id="@+id/drawarLayout"
     tools:context=".MainActivity">
-
     <LinearLayout
-        android:layout_width="409dp"
-        android:layout_height="729dp"
         android:orientation="vertical"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="1dp">
-
-        <Button
-            android:id="@+id/button2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:elevation="16dp"
+            android:background="@color/white"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="loginClick"
-            android:text="Login" />
+            android:layout_height="?actionBarSize">
+            <ImageView
+                android:id="@+id/imgMenu"
+                android:padding="8dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_menu_item"
+                android:layout_width="40dp"
+                android:layout_height="40dp"/>
+            <TextView
+                android:id="@+id/title"
+                android:text="@string/app_name"
+                android:layout_gravity="center"
+                android:textStyle="bold|normal"
+                android:textSize="18sp"
+                android:layout_margin="15dp"
+                android:textColor="#0E38CF"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+        <fragment
+            android:id="@+id/fragment"
+            android:name="androidx.navigation.fragment.NavHostFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:defaultNavHost="true"
+            app:navGraph="@navigation/nav_frag" />
 
     </LinearLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!--add drawerlayout-->
+    <include layout="@layout/nav_drawar"/>
+
+</androidx.drawerlayout.widget.DrawerLayout>
