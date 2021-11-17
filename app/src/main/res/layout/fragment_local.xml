@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.NotificationFragment">
+    tools:context=".view.CourtFragment">
 
     <LinearLayout
         android:orientation="vertical"
@@ -12,13 +12,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <TextView
-            android:text="@string/notification"
+            android:text="@string/local"
             android:textStyle="bold"
             android:textSize="25sp"
             android:textColor="#0840CC"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
-
 
     </LinearLayout>
 
