@@ -1,5 +1,6 @@
-package com.br.gookapp.service.gook.scheduler.dto
+package com.br.gookapp.service.gook.scheduler.dto.response
 
+import com.br.gookapp.service.gook.scheduler.dto.SchedulerStatusPort
 import java.time.LocalDateTime
 
 data class SchedulerResponse(

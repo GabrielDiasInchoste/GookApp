@@ -11,8 +11,13 @@
         android:label="Home"
         tools:layout="@layout/fragment_home" />
     <fragment
+        android:id="@+id/scheduler"
+        android:name="com.br.gookapp.view.SchedulersFragment"
+        android:label="@string/scheduler"
+        tools:layout="@layout/fragment_schedulers" />
+    <fragment
         android:id="@+id/court"
-        android:name="com.br.gookapp.view.CourtFragment"
+        android:name="com.br.gookapp.view.CourtActivity"
         android:label="@string/court"
         tools:layout="@layout/fragment_court" />
     <fragment
@@ -22,9 +27,9 @@
         tools:layout="@layout/fragment_local" />
     <fragment
         android:id="@+id/court_form"
-        android:name="com.br.gookapp.view.CourtFormFragment"
+        android:name="com.br.gookapp.view.SchedulerDetailsActivity"
         android:label="@string/local"
-        tools:layout="@layout/fragment_court_form" />
+        tools:layout="@layout/fragment_scheduler_details" />
     <fragment
         android:id="@+id/navItemLogout"
         android:name="com.br.gookapp.view.LogoutFragment"

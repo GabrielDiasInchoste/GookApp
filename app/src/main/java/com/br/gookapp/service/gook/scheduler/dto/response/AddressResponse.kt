@@ -1,4 +1,4 @@
-package com.br.gookapp.service.gook.scheduler.dto
+package com.br.gookapp.service.gook.scheduler.dto.response
 
 import java.time.LocalDateTime
 
@@ -10,4 +10,4 @@ data class AddressResponse(
     val cep: String,
     val createDate: LocalDateTime,
     val lasModifiedDate: LocalDateTime
-)
+): java.io.Serializable

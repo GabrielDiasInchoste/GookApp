@@ -8,9 +8,9 @@
                 android:icon="@drawable/ic_home"
                 android:title="@string/home" />
             <item
-                android:id="@+id/court"
-                android:icon="@drawable/ic_profile"
-                android:title="@string/court" />
+                android:id="@+id/scheduler"
+                android:icon="@drawable/ic_policy"
+                android:title="@string/scheduler" />
             <item
                 android:id="@+id/local"
                 android:icon="@drawable/ic_notification"

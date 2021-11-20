@@ -1,4 +1,4 @@
-package com.br.gookapp.service.gook.scheduler.dto
+package com.br.gookapp.service.gook.scheduler.dto.request
 
 data class CancelRequest(
 

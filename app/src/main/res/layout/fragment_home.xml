@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".view.HomeFragment">
+
     <LinearLayout
         android:orientation="vertical"
         android:layout_gravity="center"
@@ -18,14 +19,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
-        <ListView
-            android:id="@+id/listScheduler"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-
-
     </LinearLayout>
-
-
 
 </FrameLayout>

@@ -1,7 +1,6 @@
-package com.br.gookapp.service.gook.scheduler.dto
+package com.br.gookapp.service.gook.scheduler.dto.response
 
-
-data class PageSchedulerResponse(
+data class PageCourtResponse(
     val number: Int,
     val numberOfElements: Int,
     val size: Int,
@@ -9,5 +8,5 @@ data class PageSchedulerResponse(
     val totalElements: Long,
     val first: Boolean,
     val last: Boolean,
-    val schedulers: List<SchedulerResponse>
-)
+    val courts: List<CourtResponse>
+): java.io.Serializable
