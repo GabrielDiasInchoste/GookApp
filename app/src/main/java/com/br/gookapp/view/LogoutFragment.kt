@@ -22,8 +22,7 @@ class LogoutFragment : Fragment() {
 
         googleSignInClient.signOut()
 
-        activity?.finishAndRemoveTask();
-
+        requireActivity().finishAffinity()
     }
 
 }
