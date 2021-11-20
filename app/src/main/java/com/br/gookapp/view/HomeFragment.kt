@@ -1,5 +1,6 @@
 package com.br.gookapp.view
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -20,15 +21,12 @@ import com.br.gookapp.service.gook.scheduler.dto.PageSchedulerResponse
 import com.br.gookapp.service.gook.scheduler.dto.SchedulerRequest
 import com.br.gookapp.service.gook.scheduler.dto.SchedulerResponse
 import com.fasterxml.jackson.module.kotlin.readValue
-import com.google.android.gms.tasks.Tasks.await
-import kotlinx.coroutines.awaitAll
 import org.json.JSONObject
+import java.time.format.DateTimeFormatter
 
 class HomeFragment : Fragment() {
 
     private lateinit var listScheduler: ListView
-
-    //    private lateinit var pageSchedulerResponse: PageSchedulerResponse
     private val mapper = JacksonConfig().objectMapper
 
     override fun onCreateView(
@@ -45,12 +43,12 @@ class HomeFragment : Fragment() {
         val mainActivity = activity as MainActivity
         if (mainActivity.userResponse?.email?.isNotEmpty() == true) {
 
-            val schedulers = getSchedulers(mainActivity.userResponse!!.email)
-
+            getSchedulers(mainActivity.userResponse!!.email)
 
         }
     }
 
+    @SuppressLint("NewApi", "ResourceType")
     private fun getSchedulers(email: String): List<SchedulerResponse> {
         val queue = Volley.newRequestQueue(requireContext())
         var pageSchedulerResponse: PageSchedulerResponse? = null
@@ -71,17 +69,34 @@ class HomeFragment : Fragment() {
                 val adapter: ArrayAdapter<String> = ArrayAdapter<String>(
                     requireContext(),
                     android.R.layout.simple_list_item_1,
-                    pageSchedulerResponse!!.schedulers.map { scheduler -> scheduler.court.name }
+                    pageSchedulerResponse!!.schedulers.map { scheduler ->
+                        scheduler.court.name + " - " + scheduler.schedule?.format(
+                            DateTimeFormatter.ofPattern("dd/MM/yyyy hh:mm")
+                        ) + " - " + scheduler.status
+                    }
                 )
                 listScheduler.adapter = adapter
                 listScheduler.onItemClickListener =
                     OnItemClickListener { _, _, position, _ ->
-                        val intent = Intent(requireContext(), CourtFragment::class.java)
+                        val intent = Intent(requireContext(), CourtFormFragment::class.java)
                         intent.putExtra(
                             "scheduler",
-                            pageSchedulerResponse!!.schedulers[position].court.name
+                            pageSchedulerResponse!!.schedulers[position]
+
                         )
                         startActivity(intent)
+//                        val courtFormFragment = CourtFormFragment()
+//                        courtFormFragment.arguments = intent.extras
+//
+//                        requireFragmentManager().beginTransaction()
+//                            .replace(
+//                                R.id.fragment_court_form,
+//                                courtFormFragment
+//                            )
+//                            .commit()
+//
+////                        requireActivity().supportFragmentManager.beginTransaction()
+
                     }
             },
             {

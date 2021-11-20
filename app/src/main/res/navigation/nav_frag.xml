@@ -21,6 +21,11 @@
         android:label="@string/local"
         tools:layout="@layout/fragment_local" />
     <fragment
+        android:id="@+id/court_form"
+        android:name="com.br.gookapp.view.CourtFormFragment"
+        android:label="@string/local"
+        tools:layout="@layout/fragment_court_form" />
+    <fragment
         android:id="@+id/navItemLogout"
         android:name="com.br.gookapp.view.LogoutFragment"
         android:label="Logout" />
