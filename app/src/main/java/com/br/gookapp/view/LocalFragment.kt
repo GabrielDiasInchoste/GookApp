@@ -78,6 +78,10 @@ class LocalFragment : Fragment() {
                             "email",
                             email
                         )
+                        intent.putExtra(
+                            "address",
+                            pageLocalResponse!!.locals[position].address
+                        )
                         startActivity(intent)
                     }
             },

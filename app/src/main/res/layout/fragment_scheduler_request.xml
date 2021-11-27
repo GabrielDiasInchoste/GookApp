@@ -35,16 +35,17 @@
             android:hint="Horario" />
 
         <Button
+            android:id="@+id/buttonSend"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#32B315"
+            android:onClick="send"
+            android:text="Contratar" />
+
+        <Button
             android:id="@+id/buttonVoltar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Voltar" />
-
-        <Button
-            android:id="@+id/buttonSend"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="send"
-            android:text="Contratar" />
     </LinearLayout>
 </androidx.drawerlayout.widget.DrawerLayout>

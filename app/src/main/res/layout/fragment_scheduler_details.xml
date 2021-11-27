@@ -62,16 +62,17 @@
 
 
         <Button
+            android:id="@+id/buttonCancel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#686060"
+            android:onClick="cancel"
+            android:text="Cancelar" />
+
+        <Button
             android:id="@+id/buttonVoltar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Voltar" />
-
-        <Button
-            android:id="@+id/buttonCancel"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="cancel"
-            android:text="Cancelar" />
     </LinearLayout>
 </androidx.drawerlayout.widget.DrawerLayout>

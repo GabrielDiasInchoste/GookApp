@@ -2,6 +2,9 @@ package com.br.gookapp.view
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.content.res.ColorStateList
+import android.graphics.Color
+import android.graphics.PorterDuff
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
@@ -47,6 +50,7 @@ class SchedulerDetailsActivity : AppCompatActivity() {
 
         if (scheduler.status == SchedulerStatusPort.CANCEL_REQUESTED || scheduler.status == SchedulerStatusPort.CANCELED) {
             buttonCancel.isEnabled = false
+            buttonCancel.backgroundTintList = ColorStateList.valueOf(Color.argb(100, 104, 96, 96))
         }
 
         editTextId.setText(scheduler.id.toString())

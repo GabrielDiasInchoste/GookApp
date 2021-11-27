@@ -8,6 +8,8 @@ data class AddressResponse(
     val number: Int,
     val description: String,
     val cep: String,
+    val latitude: String,
+    val longitude: String,
     val createDate: LocalDateTime,
     val lasModifiedDate: LocalDateTime
 ): java.io.Serializable
