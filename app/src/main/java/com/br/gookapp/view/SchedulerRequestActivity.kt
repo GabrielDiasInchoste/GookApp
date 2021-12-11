@@ -1,8 +1,10 @@
 package com.br.gookapp.view
 
 import android.annotation.SuppressLint
+import android.content.ContentValues
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
@@ -15,6 +17,8 @@ import com.br.gookapp.R
 import com.br.gookapp.service.JacksonConfig
 import com.br.gookapp.service.gook.scheduler.dto.request.SchedulerRequest
 import com.br.gookapp.service.gook.scheduler.dto.response.CourtResponse
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.firebase.messaging.FirebaseMessaging
 import org.json.JSONObject
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
@@ -24,6 +28,7 @@ class SchedulerRequestActivity : AppCompatActivity() {
 
     private val mapper = JacksonConfig().objectMapper
     private lateinit var court: CourtResponse
+    private lateinit var token: String
 
     @SuppressLint("NewApi")
     override fun onCreate(
@@ -42,6 +47,14 @@ class SchedulerRequestActivity : AppCompatActivity() {
         val editTextQuadra: EditText = findViewById(R.id.editTextQuadraRequest)
         val editTextScheduleRequest: EditText = findViewById(R.id.editTextScheduleRequest)
 
+        FirebaseMessaging.getInstance().token.addOnCompleteListener(OnCompleteListener { task ->
+            if (!task.isSuccessful) {
+                Log.i(ContentValues.TAG, "Fetching FCM registration token failed", task.exception)
+                return@OnCompleteListener
+            }
+            // Get new FCM registration token
+            token = task.result
+        })
 
         editTextEmail.setText(email)
         editTextQuadra.setText(court.name)
@@ -60,10 +73,11 @@ class SchedulerRequestActivity : AppCompatActivity() {
 
         val request = JsonObjectRequest(
             Request.Method.POST,
-            "http://192.168.5.7:8080/gookScheduler/v1/scheduler/",
+            "http://192.168.5.7:8080/gookBFF/v1/scheduler",
             JSONObject(
                 mapper.writeValueAsString(
                     SchedulerRequest(
+                        token,
                         customerEmail = editTextEmail.text.toString(),
                         courtId = court.id,
                         schedule = LocalDateTime.parse(

@@ -6,4 +6,5 @@
     <string name="court">Quadra</string>
     <string name="logout">Logout</string>
     <string name="scheduler">Agendamentos</string>
+    <string name="msg_token_fmt">msg_token_fmt</string>
 </resources>

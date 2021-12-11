@@ -1,7 +1,10 @@
 package com.br.gookapp
 
+import android.annotation.SuppressLint
+import android.content.ContentValues.TAG
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
@@ -24,8 +27,10 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
+import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.gms.tasks.Task
 import com.google.android.material.navigation.NavigationView
+import com.google.firebase.messaging.FirebaseMessaging
 import org.json.JSONObject
 
 
@@ -37,6 +42,7 @@ class MainActivity : AppCompatActivity() {
     val RC_SIGN_IN: Int = 1
     var userResponse: UserResponse? = null
 
+    @SuppressLint("StringFormatInvalid")
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
@@ -105,7 +111,7 @@ class MainActivity : AppCompatActivity() {
 
         val request = JsonObjectRequest(
             Request.Method.GET,
-            "http://192.168.5.7:8081/gookUser/v1/user/email/${account.email}",
+            "http://192.168.5.7:8080/gookBFF/v1/user/email/${account.email}",
             null,
             Response.Listener {
                 userResponse = mapper.readValue(it.toString())
@@ -113,7 +119,7 @@ class MainActivity : AppCompatActivity() {
             {
                 val request = JsonObjectRequest(
                     Request.Method.POST,
-                    "http://192.168.5.7:8081/gookUser/v1/user",
+                    "http://192.168.5.7:8080/gookBFF/v1/user",
                     JSONObject(
                         mapper.writeValueAsString(
                             UserRequest(

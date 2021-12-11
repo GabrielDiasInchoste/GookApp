@@ -67,7 +67,7 @@ class SchedulerDetailsActivity : AppCompatActivity() {
 
         val request = JsonObjectRequest(
             Request.Method.POST,
-            "http://192.168.5.7:8080/gookScheduler/v1/cancel/schedulerId/${cancelId.text}",
+            "http://192.168.5.7:8080/gookBFF/v1/scheduler/cancel/schedulerId/${cancelId.text}",
             JSONObject(
                 mapper.writeValueAsString(
                     CancelRequest(

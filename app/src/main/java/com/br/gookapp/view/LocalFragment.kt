@@ -53,7 +53,7 @@ class LocalFragment : Fragment() {
 
         val request = JsonObjectRequest(
             Request.Method.GET,
-            "http://192.168.5.7:8080/gookScheduler/v1/local/all/",
+            "http://192.168.5.7:8080/gookBFF/v1/local/all/",
             null,
             Response.Listener {
                 pageLocalResponse = mapper.readValue(it.toString())

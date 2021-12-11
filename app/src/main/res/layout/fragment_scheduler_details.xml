@@ -65,7 +65,7 @@
             android:id="@+id/buttonCancel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="#686060"
+            android:backgroundTint="#B31414"
             android:onClick="cancel"
             android:text="Cancelar" />
 

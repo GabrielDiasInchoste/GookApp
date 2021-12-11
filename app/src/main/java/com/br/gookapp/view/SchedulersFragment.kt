@@ -55,7 +55,7 @@ class SchedulersFragment : Fragment() {
 
         val request = JsonObjectRequest(
             Request.Method.GET,
-            "http://192.168.5.7:8080/gookScheduler/v1/scheduler/all/?customerEmail=$email",
+            "http://192.168.5.7:8080/gookBFF/v1/scheduler/all/?customerEmail=$email",
             null,
             Response.Listener {
                 pageSchedulerResponse = mapper.readValue(it.toString())
