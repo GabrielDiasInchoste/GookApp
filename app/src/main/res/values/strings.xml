@@ -1,10 +1,9 @@
 <resources>
     <string name="app_name">GookApp</string>
     <string name="sign_out">Sign Out</string>
-    <string name="home">Home</string>
+    <string name="home">Página Inicial</string>
     <string name="local">Local</string>
     <string name="court">Quadra</string>
     <string name="logout">Logout</string>
     <string name="scheduler">Agendamentos</string>
-    <string name="msg_token_fmt">msg_token_fmt</string>
 </resources>

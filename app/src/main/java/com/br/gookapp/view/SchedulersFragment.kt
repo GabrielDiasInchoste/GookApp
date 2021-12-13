@@ -19,6 +19,7 @@ import com.br.gookapp.R
 import com.br.gookapp.service.JacksonConfig
 import com.br.gookapp.service.gook.scheduler.dto.response.PageSchedulerResponse
 import com.br.gookapp.service.gook.scheduler.dto.response.SchedulerResponse
+import com.br.gookapp.service.gook.scheduler.dto.toResponse
 import com.fasterxml.jackson.module.kotlin.readValue
 import java.time.format.DateTimeFormatter
 
@@ -63,12 +64,14 @@ class SchedulersFragment : Fragment() {
                 val adapter: ArrayAdapter<String> = ArrayAdapter<String>(
                     requireContext(),
                     android.R.layout.simple_list_item_1,
-                    pageSchedulerResponse!!.schedulers.map { scheduler ->
-                        scheduler.court.name + " - " + scheduler.schedule?.format(
-                            DateTimeFormatter.ofPattern("dd/MM/yyyy hh:mm")
-                        ) + " - " + scheduler.status
-                    }
+                    pageSchedulerResponse!!.schedulers.sortedByDescending { scheduler -> scheduler.schedule }
+                        .map { scheduler ->
+                            scheduler.status.toResponse() + " - " + scheduler.court.name + " - " + scheduler.schedule?.format(
+                                DateTimeFormatter.ofPattern("dd/MM/yyyy hh:mm")
+                            )
+                        }
                 )
+
                 listScheduler.adapter = adapter
                 listScheduler.onItemClickListener =
                     OnItemClickListener { _, _, position, _ ->

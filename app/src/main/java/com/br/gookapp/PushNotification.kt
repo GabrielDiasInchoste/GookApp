@@ -16,16 +16,6 @@ import com.google.firebase.messaging.RemoteMessage
 
 class PushNotification : FirebaseMessagingService() {
 
-//    override fun onMessageReceived(remoteMessage: RemoteMessage) {
-//
-//        remoteMessage.notification?.let {
-//
-//            Log.d("Message Push", "asdjihukasjkldsalhjkdhjklashjkdhsakhjdkhj --- $it")
-//        }
-//
-//    }
-
-    private val TAG = "FireBaseMessagingService"
     var NOTIFICATION_CHANNEL_ID = "com.br.gookapp"
     val NOTIFICATION_ID = 100
 

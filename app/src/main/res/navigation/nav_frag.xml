@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/home"
         android:name="com.br.gookapp.view.HomeFragment"
-        android:label="Home"
+        android:label="@string/home"
         tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/scheduler"
